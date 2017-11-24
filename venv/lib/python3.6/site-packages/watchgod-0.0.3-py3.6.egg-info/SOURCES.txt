@@ -1,0 +1,15 @@
+README.rst
+setup.cfg
+setup.py
+watchgod/__init__.py
+watchgod/__main__.py
+watchgod/cli.py
+watchgod/main.py
+watchgod/version.py
+watchgod/watcher.py
+watchgod.egg-info/PKG-INFO
+watchgod.egg-info/SOURCES.txt
+watchgod.egg-info/dependency_links.txt
+watchgod.egg-info/entry_points.txt
+watchgod.egg-info/top_level.txt
+watchgod.egg-info/zip-safe

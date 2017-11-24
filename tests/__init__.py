@@ -1,0 +1,3 @@
+"""
+adev-server tests
+"""

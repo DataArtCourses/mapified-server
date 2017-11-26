@@ -16,7 +16,6 @@ from app.profiles import utils
 from app.base.settings import Settings
 from app.base.views import BaseView
 from app.base.decorators import login_required
-from .exceptions import *
 from .mailer import Mailer
 from .models import UserModel as User
 
@@ -53,7 +52,7 @@ class RegistrationView(BaseView):
             await self.request.app.objects.create(User, **new_user)
         except IntegrityError as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
-            return json_response({'error':'User with this email already exists'}, status=400)
+            return json_response({'error': 'User with this email already exists'}, status=400)
         else:
             link = f'http://{self.request.host}{self.request.path}?confirm={register_link}'
             tpl = aiohttp_jinja2.render_string('letter.html', request=self.request, context={'link': link})
@@ -95,7 +94,7 @@ class ProfileView(BaseView):
             user = await self.request.app.objects.get(User, user_id=user_id)
         except DoesNotExist as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
-            return json_response({'error':'Such user does not exist'}, status=400)
+            return json_response({'error': 'Such user does not exist'}, status=400)
         return json_response(dict(
                                   user_id=user.user_id,
                                   first_name=user.first_name,
@@ -117,7 +116,7 @@ class ProfileView(BaseView):
         owner = self.request.user.get('user_id')
         user_id = self.request.match_info['user_id']
         if int(user_id) != int(owner):
-            return json_response({'error':'You don`t have permission for it'}, status=403)
+            return json_response({'error': 'You don`t have permission for it'}, status=403)
         user = await self.request.app.objects.get(User, user_id=user_id)
         user.first_name = user_data.get('first_name', '')
         user.last_name = user_data.get('last_name', '')

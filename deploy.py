@@ -14,6 +14,7 @@ log.setLevel(0)
 logging.root.setLevel(0)
 log.addHandler(logging.StreamHandler())
 
+
 async def db_import():
     logging.debug('Creating database')
     with app.objects.allow_sync():

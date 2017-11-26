@@ -14,11 +14,12 @@ from peewee import (
 from app.base.settings import Settings
 from app.base.models import BaseModel
 from app.profiles import utils
-from app.profiles.exceptions import UserAlreadyExist, RegistrationLinkExpired
+from app.profiles.exceptions import UserAlreadyExist, RegistrationLinkExpired, UserDoesNotExist, PasswordDoesNotMatch
 
 settings = Settings()
 
 log = logging.getLogger('application')
+
 
 class UserModel(BaseModel):
 
@@ -36,20 +37,6 @@ class UserModel(BaseModel):
     confirm_key = CharField(max_length=255, default='')
     registered = SmallIntegerField(default=0)
 
-    @classmethod
-    async def all_users(cls, objects):
-        return await objects.execute(cls.select())
-
-    @classmethod
-    async def create_new_user(cls, objects, password, email):
-        password = utils.encrypt_password(password, email)
-        register_link = utils.create_register_link(password, email, settings.SALT)
-        try:
-            await objects.create(cls, email=email, password=password, confirm_key=register_link)
-            return register_link
-        except IntegrityError:
-            error = "User with this email already exists"
-            raise UserAlreadyExist(error)
 
     @classmethod
     async def confirm_registration(cls, objects, confirm_key):
@@ -64,3 +51,5 @@ class UserModel(BaseModel):
             user.confirm_key = ''
             await objects.update(user)
             log.info("User %s successfuly confirmed registration", user.email)
+
+

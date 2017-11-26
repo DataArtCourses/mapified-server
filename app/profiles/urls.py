@@ -7,5 +7,5 @@ from .views import (
 routes = [
     dict(method='*', path='/api/register', handler=RegistrationView, name='registration'),
     dict(method='*', path='/api/login', handler=LoginView, name='login'),
-    dict(method='*', path='/api/profile', handler=ProfileView, name='profile')
+    dict(method='*', path='/api/profile/{user_id}', handler=ProfileView, name='profile')
 ]

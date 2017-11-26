@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="544e6a92-f0d0-4406-a8de-ed9816d65412" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/base/cache.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/base/decorators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/profiles/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/profiles/mailer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/profiles/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/letter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/registration.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deploy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/base/middlewares.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/base/settings.py" afterPath="$PROJECT_DIR$/app/base/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/base/urls.py" afterPath="$PROJECT_DIR$/app/base/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main.py" afterPath="$PROJECT_DIR$/app/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profiles/models.py" afterPath="$PROJECT_DIR$/app/profiles/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profiles/urls.py" afterPath="$PROJECT_DIR$/app/profiles/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profiles/views.py" afterPath="$PROJECT_DIR$/app/profiles/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy.py" afterPath="$PROJECT_DIR$/deploy.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +18,90 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="deploy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deploy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/profiles/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="119" column="77" lean-forward="false" selection-start-line="119" selection-start-column="77" selection-end-line="119" selection-end-column="77" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="decorators.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/base/decorators.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/profiles/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/base/middlewares.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/profiles/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="52" column="78" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="52" selection-end-column="78" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,7 +123,6 @@
         <option value="$PROJECT_DIR$/app/views.py" />
         <option value="$PROJECT_DIR$/app/urls.py" />
         <option value="$PROJECT_DIR$/app/models.py" />
-        <option value="$PROJECT_DIR$/app/profiles/urls.py" />
         <option value="$PROJECT_DIR$/app/base/models.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/app/pins/views.py" />
@@ -57,9 +131,12 @@
         <option value="$PROJECT_DIR$/app/base/urls.py" />
         <option value="$PROJECT_DIR$/app/deploy.py" />
         <option value="$PROJECT_DIR$/app/profiles/mailer.py" />
-        <option value="$PROJECT_DIR$/deploy.py" />
         <option value="$PROJECT_DIR$/app/base/settings.py" />
         <option value="$PROJECT_DIR$/app/base/cache.py" />
+        <option value="$PROJECT_DIR$/deploy.py" />
+        <option value="$PROJECT_DIR$/app/base/decorators.py" />
+        <option value="$PROJECT_DIR$/app/profiles/urls.py" />
+        <option value="$PROJECT_DIR$/app/base/middlewares.py" />
         <option value="$PROJECT_DIR$/app/main.py" />
         <option value="$PROJECT_DIR$/app/profiles/models.py" />
         <option value="$PROJECT_DIR$/app/profiles/views.py" />
@@ -88,6 +165,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,13 +194,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mapified_server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../map-test/mapnotes/server" />
     <property name="add_unversioned_files" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -133,14 +210,14 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/base" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/base" />
       <recent name="$PROJECT_DIR$/app/profiles" />
       <recent name="$PROJECT_DIR$/app/templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/base" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -166,19 +243,28 @@
       <option name="presentableId" value="Default" />
       <updated>1511558794410</updated>
     </task>
+    <task id="LOCAL-00001" summary="Registration">
+      <created>1511667493338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1511667493338</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="32" y="503" width="1602" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25611326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25933075" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -193,6 +279,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -221,9 +311,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -231,7 +319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -305,16 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/base/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -369,7 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -384,7 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -392,7 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -401,44 +475,6 @@
         <state relative-caret-position="120">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/profiles/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/profiles/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/base/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,26 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/profiles/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="54" column="60" lean-forward="false" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/profiles/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/base/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-461">
@@ -490,20 +506,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/base/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profiles/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/base/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-86">
-          <caret line="84" column="24" lean-forward="true" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
+        <state relative-caret-position="154">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/profiles/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/profiles/mailer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="30">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/base/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profiles/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="52" column="78" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="52" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profiles/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="119" column="77" lean-forward="false" selection-start-line="119" selection-start-column="77" selection-end-line="119" selection-end-column="77" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

@@ -8,8 +8,8 @@ import peewee_async
 
 from aiohttp import web
 from aiohttp_jinja2 import APP_KEY as JINJA2_APP_KEY
-from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
+from app.base.middlewares import auth_middleware
 from app.base.settings import Settings
 from app.base.urls import routes
 from app.base.models import database
@@ -25,6 +25,7 @@ DATABASE = dict(
         user=settings.DB_USER_NAME,
         password=settings.DB_PASSWORD
     )
+SALT = settings.SALT
 
 
 @jinja2.contextfilter
@@ -87,7 +88,7 @@ def setup_routes(app):
 
 
 def create_app(loop):
-    app = web.Application()
+    app = web.Application(middlewares=(auth_middleware,))
     app.update(
         name='adev-server',
         settings=settings
@@ -105,9 +106,6 @@ def create_app(loop):
     app.database = database
     app.database.set_allow_sync(False)
     app.objects = peewee_async.Manager(app.database)
-
-    secret_key = base64.urlsafe_b64decode(settings.COOKIE_SECRET)
-    aiohttp_session.setup(app, EncryptedCookieStorage(secret_key))
 
     setup_routes(app)
     return app

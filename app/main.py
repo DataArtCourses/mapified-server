@@ -17,6 +17,16 @@ from app.base.models import database
 THIS_DIR = Path(__file__).parent
 BASE_DIR = THIS_DIR.parent
 
+settings = Settings()
+
+DATABASE = dict(
+        host=settings.DB_HOST,
+        database=settings.DB_NAME,
+        user=settings.DB_USER_NAME,
+        password=settings.DB_PASSWORD
+    )
+
+
 @jinja2.contextfilter
 def reverse_url(context, name, **parts):
     """
@@ -78,7 +88,6 @@ def setup_routes(app):
 
 def create_app(loop):
     app = web.Application()
-    settings = Settings()
     app.update(
         name='adev-server',
         settings=settings
@@ -92,7 +101,7 @@ def create_app(loop):
     )
 
     # db conn
-    database.init(**settings.DATABASE)
+    database.init(**DATABASE)
     app.database = database
     app.database.set_allow_sync(False)
     app.objects = peewee_async.Manager(app.database)

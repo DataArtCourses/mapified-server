@@ -23,11 +23,11 @@ class Settings:
     # which is not saved in code, you could also use Required(str) to force the env variable to be set.
     COOKIE_SECRET = 'yjb2C5lGXzG3esDnQR3DP9kgKRApd9ItPEU8VeFn7NQ='
     DEBUG = False
-    DB_HOST = '127.0.0.1'
+    DB_HOST = 'db4free.net'
     DB_PORT = '3306'
-    DB_NAME = 'testDB'
-    DB_USER_NAME = 'root'
-    DB_PASSWORD = '123456'
+    DB_NAME = 'mapified'
+    DB_USER_NAME = 'mapified'
+    DB_PASSWORD = 'qwerty123456'
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = '587'
     EMAIL_USER_NAME = 'mapified.no.reply'

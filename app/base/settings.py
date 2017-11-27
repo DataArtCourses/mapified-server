@@ -24,7 +24,7 @@ class Settings:
     COOKIE_SECRET = 'yjb2C5lGXzG3esDnQR3DP9kgKRApd9ItPEU8VeFn7NQ='
     DEBUG = False
     DB_HOST = 'db4free.net'
-    DB_PORT = '3306'
+    DB_PORT = '3307'
     DB_NAME = 'mapified'
     DB_USER_NAME = 'mapified'
     DB_PASSWORD = 'qwerty123456'

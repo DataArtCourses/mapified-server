@@ -25,15 +25,15 @@ class Settings:
     DB_HOST = 'db4free.net'
     DB_PORT = '3307'
     DB_NAME = 'mapified'
-    DB_USER_NAME = 'mapified'
-    DB_PASSWORD = 'qwerty123456'
+    DB_USER_NAME = Required(str)
+    DB_PASSWORD = Required(str)
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = '587'
     EMAIL_USER_NAME = 'mapified.no.reply'
-    EMAIL_PASSWORD = '1337mapified42'
+    EMAIL_PASSWORD = Required(str)
     CACHE_HOST = '127.0.0.1'
     CACHE_PORT = '11211'
-    SALT = 'salt'
+    SALT = Required(str)
 
     def __init__(self, **custom_settings):
         """

@@ -47,7 +47,7 @@ class UserModel(BaseModel):
     @classmethod
     async def create_new(cls, objects, email, password):
         password = utils.encrypt_password(email=email, password=password)
-        register_link = utils.create_register_link(password, new_user.get('email'), settings.SALT)
+        register_link = utils.create_register_link(password, email, settings.SALT)
         await objects.create(cls, email=email, password=password, confirm_key=register_link)
         return register_link
 

@@ -22,6 +22,18 @@ class Settings:
     # you should replace this with another value via the environment variable APP_COOKIE_SECRET
     # which is not saved in code, you could also use Required(str) to force the env variable to be set.
     DEBUG = False
+    DB_HOST = 'db4free.net'
+    DB_PORT = '3307'
+    DB_NAME = 'mapified'
+    DB_USER_NAME = Required(str)
+    DB_PASSWORD = Required(str)
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = '587'
+    EMAIL_USER_NAME = 'mapified.no.reply'
+    EMAIL_PASSWORD = Required(str)
+    CACHE_HOST = '127.0.0.1'
+    CACHE_PORT = '11211'
+    SALT = Required(str)
 
     def __init__(self, **custom_settings):
         """

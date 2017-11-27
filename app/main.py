@@ -2,7 +2,6 @@ import base64
 from pathlib import Path
 
 import aiohttp_jinja2
-import aiohttp_session
 import jinja2
 import peewee_async
 

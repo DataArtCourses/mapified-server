@@ -20,7 +20,7 @@ settings = Settings()
 
 DATABASE = dict(
         host=settings.DB_HOST,
-        port=settings.DB_PORT,
+        port=int(settings.DB_PORT),
         database=settings.DB_NAME,
         user=settings.DB_USER_NAME,
         password=settings.DB_PASSWORD

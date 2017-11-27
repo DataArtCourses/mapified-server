@@ -22,9 +22,9 @@ class Settings:
     # you should replace this with another value via the environment variable APP_COOKIE_SECRET
     # which is not saved in code, you could also use Required(str) to force the env variable to be set.
     DEBUG = False
-    DB_HOST = 'sql11.freesqldatabase.com'
-    DB_PORT = '3306'
-    DB_NAME = 'sql11207540'
+    DB_HOST = 'db4free.net'
+    DB_PORT = '3307'
+    DB_NAME = 'mapified'
     DB_USER_NAME = Required(str)
     DB_PASSWORD = Required(str)
     EMAIL_HOST = 'smtp.gmail.com'

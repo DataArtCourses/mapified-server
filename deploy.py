@@ -23,7 +23,7 @@ async def create_app(_loop):
     database.init(**DATABASE)
     _app.database = database
     _app.database.set_allow_sync(False)
-    _app.objects = peewee_async.Manager(app.database)
+    _app.objects = peewee_async.Manager(database)
 
     return _app
 

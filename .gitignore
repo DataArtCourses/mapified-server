@@ -1,0 +1,4 @@
+.idea/
+venv/
+activate.settings.sh
+.env

@@ -2,6 +2,7 @@ import base64
 from pathlib import Path
 
 import aiohttp_jinja2
+import aiohttp_cors
 import jinja2
 import peewee_async
 
@@ -82,9 +83,9 @@ def static_url(context, static_file_path):
     return '{}/{}'.format(static_url.rstrip('/'), static_file_path.lstrip('/'))
 
 
-def setup_routes(app):
-    for route in routes:
-        app.router.add_route(**route)
+# def setup_routes(app):
+#     for route in routes:
+#         app.router.add_route(**route)
 
 
 def create_app(loop):
@@ -93,6 +94,14 @@ def create_app(loop):
         name='adev-server',
         settings=settings
     )
+
+    cors = aiohttp_cors.setup(app, defaults={
+        "*": aiohttp_cors.ResourceOptions(
+            allow_credentials=True,
+            expose_headers="*",
+            allow_headers="*",
+        )
+    })
 
     jinja2_loader = jinja2.FileSystemLoader(str(THIS_DIR / 'templates'))
     aiohttp_jinja2.setup(app, loader=jinja2_loader, app_key=JINJA2_APP_KEY)
@@ -107,5 +116,10 @@ def create_app(loop):
     app.database.set_allow_sync(False)
     app.objects = peewee_async.Manager(app.database)
 
-    setup_routes(app)
+    for route in routes:
+        for method in ('get', 'post', 'delete', 'put'):
+            handler = getattr(route['handler'], method, None)
+            if not handler:
+                continue
+            cors.add(app.router.add_route(method, route['path'], route['handler']))
     return app

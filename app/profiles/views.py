@@ -29,8 +29,8 @@ class RegistrationView(BaseView):
     """ Registration model"""
 
     async def get(self):
-        confirm_key = self.request.query.get('confirm')
-        objects = self.request.app.objects
+        confirm_key = await self.request.query.get('confirm')
+        objects = await self.request.app.objects
         try:
             await User.confirm_registration(objects, confirm_key)
         except DoesNotExist:
@@ -76,7 +76,7 @@ class ProfileView(BaseView):
 
     @login_required
     async def get(self):
-        user_id = self.request.match_info['user_id']
+        user_id = await self.request.match_info['user_id']
         try:
             profile = await User.get_profile(self.request.app.objects, user_id)
         except DoesNotExist as e:
@@ -86,18 +86,18 @@ class ProfileView(BaseView):
 
     @login_required
     async def post(self):
-        email = self.request.user['email']
+        email = await self.request.user['email']
         log.info(f"User {email} trying to modify self data")
         user_data = await self.request.json()
         if not set(user_data.keys()) == {'first_name', 'last_name', 'phone', 'bio', 'avatar_url'}:
             return json_response({'error': "Request must consist all this fields: "
                                            "'first_name', 'surname', 'phone', 'bio', 'avatar_url'"}, status=400)
-        owner = self.request.user.get('user_id')
-        user_id = self.request.match_info['user_id']
+        owner = await self.request.user.get('user_id')
+        user_id = await self.request.match_info['user_id']
         if int(user_id) != int(owner):
             return json_response({'error': 'You don`t have permission for it'}, status=403)
         try:
-            User.update_profile(self.request.app.objects, user_id, user_data)
+            await User.update_profile(self.request.app.objects, user_id, user_data)
         except:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Something wrong'}, status=400)

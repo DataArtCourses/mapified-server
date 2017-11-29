@@ -85,7 +85,7 @@ class ProfileView(BaseView):
         return json_response(profile, status=200)
 
     @login_required
-    async def put(self):
+    async def post(self):
         email = self.request.user['email']
         log.info(f"User {email} trying to modify self data")
         user_data = await self.request.json()

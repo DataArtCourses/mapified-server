@@ -5,7 +5,8 @@ import peewee_async
 
 from aiohttp import web
 
-from app.profiles.models import UserModel
+from app.profiles.models import (UserModel, Friends, )
+from app.pins.models import (PinModel, PhotoModel, PhotoLikes, CommentModel, CommentLikes)
 from app.base.models import database
 from app.main import DATABASE
 
@@ -32,12 +33,24 @@ async def db_import():
     logging.debug('Creating database')
     with app.objects.allow_sync():
         UserModel.create_table(True)
+        Friends.create_table(True)
+        PinModel.create_table(True)
+        PhotoModel.create_table(True)
+        CommentModel.create_table(True)
+        CommentLikes.create_table(True)
+        PhotoLikes.create_table(True)
     log.info('Done creating database')
 
 
 async def drop_tables():
     logging.debug('Deleting all tables...')
     with app.objects.allow_sync():
+        Friends.drop_table(True)
+        PhotoLikes.drop_table(True)
+        CommentLikes.drop_table(True)
+        CommentModel.drop_table(True)
+        PhotoModel.drop_table(True)
+        PinModel.drop_table(True)
         UserModel.drop_table(True)
     logging.debug('Done deleting tables')
 

@@ -7,8 +7,10 @@ from peewee import (
                     CharField,
                     TextField,
                     TimeField,
-                    SmallIntegerField
+                    SmallIntegerField,
+                    ForeignKeyField
                     )
+
 
 from app.base.settings import Settings
 from app.base.models import BaseModel
@@ -82,7 +84,7 @@ class UserModel(BaseModel):
                     last_name=user.last_name,
                     phone=user.phone,
                     bio=user.bio,
-                    avatar_url=user.avatar_url
+                    avatar_url=user.avatar_url,
                     )
 
     @classmethod
@@ -95,3 +97,20 @@ class UserModel(BaseModel):
                         avatar_url=user.avatar_url
                         ) for user in users]
         return response
+
+    async def get_friends(self, objects):
+        pass
+
+
+class Friends(BaseModel):
+
+    """ Friends relationships """
+
+    user = ForeignKeyField(UserModel, related_name="user")
+    friend = ForeignKeyField(UserModel, related_name="friend")
+
+    class Meta:
+        indexes = (
+            # Specify a unique multi-column index on from/to-user.
+            (('user', 'friend'), True),
+        )

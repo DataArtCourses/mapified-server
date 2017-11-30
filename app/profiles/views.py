@@ -1,15 +1,14 @@
 import logging
 import asyncio
-import datetime
 
 import aiohttp_jinja2
-import jwt
 
 from aiohttp import web
 from aiohttp.web_response import json_response
 from peewee import (
                     DoesNotExist,
-                    IntegrityError
+                    IntegrityError,
+                    DataError
                     )
 
 from app.base.settings import Settings
@@ -37,7 +36,7 @@ class RegistrationView(BaseView):
             log.info("Somebody tried to register once again with %s key", confirm_key)
             error = "Registration link expired"
             return web.Response(body=error, status=400)
-        return web.Response(body="Thanks for registration!", status=200)
+        return web.HTTPFound('https://mapified.netlify.com/')
 
     async def post(self):
         new_user = await self.request.json()
@@ -65,7 +64,7 @@ class LoginView(BaseView):
             token = await User.login(self.request.app.objects, **credentials)
         except DoesNotExist as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
-            return json_response({'error': 'Wrong credentials'}, status=400)
+            return json_response({'error': 'Wrong email or password. Please, try again.'}, status=400)
         else:
             return json_response(token, status=200)
 
@@ -99,7 +98,7 @@ class ProfileView(BaseView):
             return json_response({'error': 'You don`t have permission for it'}, status=403)
         try:
             await User.update_profile(self.request.app.objects, user_id, user_data)
-        except:
+        except DataError as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Something wrong'}, status=400)
         return json_response('Success', status=200)
@@ -113,7 +112,7 @@ class AllUsersView(BaseView):
     async def get(self):
         try:
             users = await User.get_all(self.request.app.objects)
-        except:
+        except Exception as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Something wrong'}, status=400)
         return json_response(users, status=200)

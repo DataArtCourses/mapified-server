@@ -76,7 +76,7 @@ class UserModel(BaseModel):
 
     @classmethod
     async def get_profile(cls, objects, user_id):
-        user = await objects.get(cls, user_id)
+        user = await objects.get(cls, user_id=user_id)
         return dict(
                     first_name=user.first_name,
                     last_name=user.last_name,

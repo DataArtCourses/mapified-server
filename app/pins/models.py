@@ -41,7 +41,7 @@ class PinModel(BaseModel):
     @classmethod
     async def add_pin(cls, objects, info, user):
         await objects.create(cls, author=user, pin_lat=info['location']['lat'], pin_lng=info['location']['lng'])
-        pin = await objects.execute(cls.select())
+        pin = await objects.execute(cls.select(author=user))
         pin = pin[0].pin_id
         await objects.create(CommentModel, author=user, body=info['comment'], pin_id=pin)
         return pin
@@ -95,12 +95,6 @@ class CommentLikes(BaseModel):
     comment = ForeignKeyField(CommentModel, related_name="who_like_comment")
     user = ForeignKeyField(User, related_name="liked_comment")
 
-    class Meta:
-        indexes = (
-            # Specify a unique multi-column index on comment/user.
-            (('comment', 'user'), True),
-        )
-
 
 class PhotoLikes(BaseModel):
 
@@ -108,9 +102,3 @@ class PhotoLikes(BaseModel):
 
     photo = ForeignKeyField(CommentModel, related_name="who_like_photo")
     user = ForeignKeyField(User, related_name="liked_photo")
-
-    class Meta:
-        indexes = (
-            # Specify a unique multi-column index on photo/user.
-            (('photo', 'user'), True),
-        )

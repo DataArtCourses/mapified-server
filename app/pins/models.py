@@ -41,7 +41,7 @@ class PinModel(BaseModel):
     @classmethod
     async def add_pin(cls, objects, info, user):
         await objects.create(cls, author=user, pin_lat=info['location']['lat'], pin_lng=info['location']['lng'])
-        pin = await objects.execute(cls.select().where(author=user))
+        pin = await objects.execute(cls.select().where(author == user))
         pin = pin[0].pin_id
         await objects.create(CommentModel, author=user, body=info['comment'], pin_id=pin)
         return pin

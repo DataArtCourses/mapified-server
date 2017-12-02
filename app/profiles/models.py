@@ -33,9 +33,12 @@ class UserModel(BaseModel):
     phone = CharField(max_length=20, default='')
     bio = TextField(default='')
     avatar_url = CharField(max_length=255, default='')
-    created = TimeField(default=datetime.datetime.now())
+    created = TimeField(default=datetime.datetime.now)
     confirm_key = CharField(max_length=255, default='')
     registered = SmallIntegerField(default=0)
+
+    class Meta:
+        order_by = ('created',)
 
     @classmethod
     async def confirm_registration(cls, objects, confirm_key):

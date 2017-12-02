@@ -25,12 +25,13 @@ class PinsView(BaseView):
     @login_required
     async def post(self):
         credentials = await self.request.json()
+        user = self.request.user.get('user_id')
         try:
-            await Pin.add_pin(self.request.app.objects, credentials)
+            pin_id = await Pin.add_pin(self.request.app.objects, credentials, user=user)
         except Exception as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Something wrong'}, status=400)
-        return json_response("Success!", status=200)
+        return json_response({"pinId": pin_id}, status=200)
 
 
 class PinInfoView(BaseView):

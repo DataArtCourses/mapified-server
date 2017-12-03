@@ -41,8 +41,8 @@ class PinModel(BaseModel):
     @classmethod
     async def add_pin(cls, objects, info, user):
         await objects.create(cls, author=user, pin_lat=info['location']['lat'], pin_lng=info['location']['lng'])
-        pin = await objects.execute(cls.select().where(cls.author == user))
-        pin = pin[0].pin_id
+        pin = await objects.execute(cls.select().where(cls.author == user).get())
+        pin = pin.pin_id
         await objects.create(CommentModel, author=user, body=info['comment'], pin_id=pin)
         return pin
 
@@ -72,15 +72,32 @@ class PhotoModel(BaseModel):
     """ Photo model """
 
     photo_id = PrimaryKeyField()
-    author = ForeignKeyField(User, related_name="photo")
+    author = ForeignKeyField(User, related_name="photo") # on_delete='CASCADE'
     photo_info = CharField(max_length=400, default='')
     pin = ForeignKeyField(PinModel, related_name="photo")
-    photo_url = TextField()
+    photo_url = TextField(unique=True)
     total_comments = IntegerField(default=0)
     created = TimeField(default=datetime.datetime.now)
 
     class Meta:
         order_by = ('-photo_id', )
+
+    @classmethod
+    async def add_photo(cls, objects, info, user):
+        await objects.create(cls, author=user, photo_url=info['pin_url'], pin=info['pin_id'])
+        photo = await objects.execute(cls.select().where(cls.author == user).get())
+        pin = await objects.get(PinModel, pin_id=info['pin_id'])
+        pin['total_photos'] = pin['total_photos'] + 1
+        await objects.update(pin)
+        return photo.photo_id
+
+    @classmethod
+    async def get_pin_gallery(cls, objects, pin):
+        photos = await objects.execute(cls.select().where(cls.pin == pin))
+        return [dict(photoId=photo.photo_id, photoUrl=photo.photo_url) for photo in photos]
+
+    async def get_photo(self, objects, photo):
+        pass
 
 
 class CommentModel(BaseModel):
@@ -97,6 +114,19 @@ class CommentModel(BaseModel):
     class Meta:
         order_by = ('-comment_id', )
 
+    @classmethod
+    async def get_comments(cls, objects, pin, photo=None):
+        query = cls.select(cls, User).join(User).switch(cls)
+        try:
+            if photo:
+                comments = await objects.execute(query.where((cls.pin == pin) & (cls.photo == photo)))
+            else:
+                comments = await objects.execute(query.where(cls.pin == pin))
+        except CommentModel.DoesNotExist:
+            comments = []
+        return comments
+
+# http://docs.peewee-orm.com/en/latest/peewee/querying.html#multiple-foreign-keys-to-the-same-model
 
 class CommentLikes(BaseModel):
 

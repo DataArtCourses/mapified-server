@@ -35,7 +35,17 @@ class PinsView(BaseView):
 
 
 class PinInfoView(BaseView):
-    pass
+
+    """ Pin info view """
+
+    @login_required
+    async def get(self):
+        try:
+            pin = await Pin.get_info(self.request.app.objects)
+        except Exception as e:
+            log.exception("Encountered error in %s (%s)", self.__class__, e)
+            return json_response({'error': 'Error read pin'}, status=400)
+        return json_response(pin, status=200)
 
 
 class PinCommentsView(BaseView):

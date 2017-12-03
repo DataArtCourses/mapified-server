@@ -65,6 +65,9 @@ class LoginView(BaseView):
         except DoesNotExist as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Wrong email or password. Please, try again.'}, status=400)
+        except Exception as e:
+            log.exception("Encountered error in %s (%s)", self.__class__, e)
+            return json_response({'error': 'Email is not verified'}, status=400)
         else:
             return json_response(token, status=200)
 

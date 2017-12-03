@@ -60,13 +60,16 @@ class UserModel(BaseModel):
     async def login(cls, objects, email, password):
         password = utils.encrypt_password(email=email, password=password)
         user = await objects.get(cls.select().where((cls.email == email) & (cls.password == password)))
-        payload = {
-            'user_id': user.user_id,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60000)
-        }
-        jwt_token = jwt.encode(payload, settings.SALT, 'HS256')
-        log.info('User %s has logged in', user.email)
-        return dict(token=jwt_token.decode('utf-8'), user_id=user.user_id)
+        if user.confirm_key != '':
+            raise Exception('Email is not verified')
+        else:
+            payload = {
+                'user_id': user.user_id,
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60000)
+            }
+            jwt_token = jwt.encode(payload, settings.SALT, 'HS256')
+            log.info('User %s has logged in', user.email)
+            return dict(token=jwt_token.decode('utf-8'), user_id=user.user_id)
 
     @classmethod
     async def update_profile(cls, objects, user_id, profile):

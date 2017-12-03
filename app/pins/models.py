@@ -62,6 +62,10 @@ class PinModel(BaseModel):
         ) for pin in pins]
         return response
 
+    @classmethod
+    async def get_info(cls, objects):
+        pass
+
 
 class PhotoModel(BaseModel):
 
@@ -75,6 +79,9 @@ class PhotoModel(BaseModel):
     total_comments = IntegerField(default=0)
     created = TimeField(default=datetime.datetime.now)
 
+    class Meta:
+        order_by = ('-photo_id', )
+
 
 class CommentModel(BaseModel):
 
@@ -86,6 +93,9 @@ class CommentModel(BaseModel):
     photo = ForeignKeyField(PhotoModel, related_name="comment", null=True)
     body = CharField(max_length=400, null=False)
     created = TimeField(default=datetime.datetime.now)
+
+    class Meta:
+        order_by = ('-comment_id', )
 
 
 class CommentLikes(BaseModel):

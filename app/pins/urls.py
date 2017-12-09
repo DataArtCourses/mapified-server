@@ -1,17 +1,19 @@
 from .views import (
                     PinsView,
-                    PinInfoView,
+                    AddCommentView,
+                    CommentView,
                     PinCommentsView,
-                    PhotosView,
+                    PinPhotosView,
                     PhotoCommentsView,
                     LikeView
                     )
 
 routes = [
     dict(method='*', path='/api/pins', handler=PinsView, name='pins'),
-    dict(method='*', path='/api/pins/{pin_id}', handler=PinInfoView, name='pin-info'),
     dict(method='*', path='/api/pins/{pin_id}/comments', handler=PinCommentsView, name='pin-comments'),
-    dict(method='*', path='/api/pins/{pin_id}/photos', handler=PhotosView, name='pin-photos'),
+    dict(method='*', path='/api/pins/{pin_id}/photos', handler=PinPhotosView, name='pin-photos'),
     dict(method='*', path='/api/photos/{photo_id}', handler=PhotoCommentsView, name='photo-comments'),
-    dict(method='GET', path='/api/comments/{like}', handler=LikeView, name='like'),
+    dict(method='POST', path='/api/comments', handler=AddCommentView, name='comments'),
+    dict(method='*', path='/api/comments/{comment_id}', handler=CommentView, name='comment'),
+    dict(method='GET', path='/api/comments/{comment_id}/like', handler=LikeView, name='like'),
 ]

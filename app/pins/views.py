@@ -59,9 +59,9 @@ class PinCommentsView(BaseView):
 
     @login_required
     async def get(self):
-        pin = self.request.match_info['pin_id']
+        pin_id = self.request.match_info['pin_id']
         try:
-            pin = await Comment.get_comments(self.request.app.objects, pin_id=pin)
+            pin = await Comment.get_comments(self.request.app.objects, pin_id=pin_id)
         except Exception as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Error read pin'}, status=400)

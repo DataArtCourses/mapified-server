@@ -28,7 +28,7 @@ class UserModel(BaseModel):
     user_id = PrimaryKeyField()
     email = CharField(max_length=255, unique=True, null=False)
     password = CharField(max_length=32, null=False)
-    first_name = CharField(max_length=255, default='')
+    first_name = CharField(max_length=40, null=False)
     last_name = CharField(max_length=255, default='')
     phone = CharField(max_length=20, default='')
     bio = TextField(default='')
@@ -50,10 +50,10 @@ class UserModel(BaseModel):
         return
 
     @classmethod
-    async def create_new(cls, objects, email, password):
+    async def create_new(cls, objects, first_name, email, password):
         password = utils.encrypt_password(email=email, password=password)
         register_link = utils.create_register_link(password, email, settings.SALT)
-        await objects.create(cls, email=email, password=password, confirm_key=register_link)
+        await objects.create(cls, email=email, first_name=first_name, password=password, confirm_key=register_link)
         return register_link
 
     @classmethod

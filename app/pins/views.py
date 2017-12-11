@@ -76,9 +76,8 @@ class AddPhotoView(BaseView):
     async def post(self):
         credentials = await self.request.json()
         user = self.request.user.get('user_id')
-        pin = self.request.match_info['pin_id']
         try:
-            photo = await Photo.add_photo(self.request.app.objects, info=credentials, user=user, pin=pin)
+            photo = await Photo.add_photo(self.request.app.objects, info=credentials, user=user)
         except Exception as e:
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Error add_photo, try again'}, status=400)

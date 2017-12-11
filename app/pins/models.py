@@ -93,11 +93,11 @@ class PhotoModel(BaseModel):
         order_by = ('-photo_id', )
 
     @classmethod
-    async def add_photo(cls, objects, info, user, pin):
+    async def add_photo(cls, objects, info, user):
         await objects.create(cls,
                              author=user,
                              photo_url=info.get('photo_url'),
-                             pin=pin,
+                             pin=info.get('pin_id'),
                              photo_info=info.get('photo_info', ''))
         photo = await objects.get(cls, author=user)
         pin = await objects.get(PinModel, pin_id=pin)

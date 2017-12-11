@@ -100,7 +100,7 @@ class PhotoModel(BaseModel):
                              pin=info.get('pin_id'),
                              photo_info=info.get('photo_info', ''))
         photo = await objects.get(cls, author=user)
-        pin = await objects.get(PinModel, pin_id=pin)
+        pin = await objects.get(PinModel, pin_id=info.get('pin_id'))
         total = pin.total_photos
         pin.total_photos = total + 1
         await objects.update(pin)

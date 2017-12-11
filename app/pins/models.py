@@ -5,9 +5,8 @@ from peewee import (
                     PrimaryKeyField,
                     IntegerField,
                     CharField,
-                    TextField,
                     DecimalField,
-                    TimeField,
+                    DateTimeField,
                     ForeignKeyField,
                     SmallIntegerField
                     )
@@ -33,7 +32,7 @@ class PinModel(BaseModel):
     total_comments = IntegerField(default=1)
     total_photos = IntegerField(default=0)
     pin_status = SmallIntegerField(default=0)
-    created = TimeField(default=datetime.datetime.now)
+    created = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
         order_by = ('-pin_id',)
@@ -88,7 +87,7 @@ class PhotoModel(BaseModel):
     pin = ForeignKeyField(PinModel, related_name="photo")
     photo_url = CharField(max_length=400, unique=True)
     total_comments = IntegerField(default=0)
-    created = TimeField(default=datetime.datetime.now)
+    created = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
         order_by = ('-photo_id', )
@@ -137,7 +136,7 @@ class CommentModel(BaseModel):
     pin = ForeignKeyField(PinModel, related_name="comment")
     photo = ForeignKeyField(PhotoModel, related_name="comment", null=True)
     body = CharField(max_length=400, null=False)
-    created = TimeField(default=datetime.datetime.now)
+    created = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
         order_by = ('-comment_id', )

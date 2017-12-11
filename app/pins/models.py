@@ -178,7 +178,7 @@ class CommentModel(BaseModel):
         else:
             raise Exception("Please enter correct id for pin or photo")
         comment = await objects.get(cls, author=user)
-        return comment.comment_id
+        return dict(commentId=comment.comment_id, created=str(comment.created))
 
 # http://docs.peewee-orm.com/en/latest/peewee/querying.html#multiple-foreign-keys-to-the-same-model
 

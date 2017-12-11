@@ -68,6 +68,23 @@ class PinCommentsView(BaseView):
         return json_response(pin, status=200)
 
 
+class AddPhotoView(BaseView):
+
+    """Add pin photo"""
+
+    @login_required
+    async def post(self):
+        credentials = await self.request.json()
+        user = self.request.user.get('user_id')
+        pin = self.request.match_info['pin_id']
+        try:
+            photo = await Photo.add_photo(self.request.app.objects, info=credentials, user=user, pin=pin)
+        except Exception as e:
+            log.exception("Encountered error in %s (%s)", self.__class__, e)
+            return json_response({'error': 'Error add_photo, try again'}, status=400)
+        return json_response(photo, status=200)
+
+
 class PinPhotosView(BaseView):
 
     """ Pin photos gallery view """
@@ -81,18 +98,6 @@ class PinPhotosView(BaseView):
             log.exception("Encountered error in %s (%s)", self.__class__, e)
             return json_response({'error': 'Error read photo gallery'}, status=400)
         return json_response(gallery, status=200)
-
-    @login_required
-    async def post(self):
-        credentials = await self.request.json()
-        user = self.request.user.get('user_id')
-        pin = self.request.match_info['pin_id']
-        try:
-            photo = await Photo.add_photo(self.request.app.objects, info=credentials, user=user, pin=pin)
-        except Exception as e:
-            log.exception("Encountered error in %s (%s)", self.__class__, e)
-            return json_response({'error': 'Error add_photo, try again'}, status=400)
-        return json_response(photo, status=200)
 
 
 class AddCommentView(BaseView):

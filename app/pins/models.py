@@ -104,7 +104,7 @@ class PhotoModel(BaseModel):
         total = pin.total_photos
         pin.total_photos = total + 1
         await objects.update(pin)
-        return photo.photo_id
+        return dict(photoId=photo.photo_id, created=str(photo.created))
 
     @classmethod
     async def get_pin_gallery(cls, objects, pin):

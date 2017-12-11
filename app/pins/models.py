@@ -41,7 +41,7 @@ class PinModel(BaseModel):
     @classmethod
     async def add_pin(cls, objects, info, user):
         await objects.create(cls, author=user, pin_lat=info['location']['lat'], pin_lng=info['location']['lng'])
-        pin = await objects.execute(cls.select().where(cls.author == user).get())
+        pin = await objects.get(cls, author=user)
         pin = pin.pin_id
         await objects.create(CommentModel, author=user, body=info['comment'], pin_id=int(pin))
         return pin
@@ -86,7 +86,7 @@ class PhotoModel(BaseModel):
     author = ForeignKeyField(User, related_name="photo") # on_delete='CASCADE'
     photo_info = CharField(max_length=400, default='')
     pin = ForeignKeyField(PinModel, related_name="photo")
-    photo_url = TextField(unique=True)
+    photo_url = CharField(max_length=400, unique=True)
     total_comments = IntegerField(default=0)
     created = TimeField(default=datetime.datetime.now)
 

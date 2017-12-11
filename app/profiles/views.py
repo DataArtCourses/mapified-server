@@ -79,7 +79,6 @@ class ProfileView(BaseView):
     @login_required
     async def get(self):
         user_id = self.request.match_info['user_id']
-        print(user_id)
         try:
             profile = await User.get_profile(self.request.app.objects, user_id)
         except DoesNotExist as e:
